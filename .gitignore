@@ -1,0 +1,31 @@
+# 匹配任意lab下的build文件夹
+/build/
+/.cache/
+/tests/
+# 匹配任意lab下的C/C++编译产物
+/*.o
+/*.obj
+/*.out
+/*.exe
+/*.bin
+/*.gch
+/*.pch
+/*.i
+/*.ii
+/*.s
+/*.asm
+/*.a
+/*.so
+/*.dll
+/*.dylib
+/*.lib
+
+# ========== 针对单个lab的自定义忽略（可选） ==========
+# 若某个lab有特殊需要忽略的文件，单独指定
+
+# ========== IDE/系统通用忽略 ==========
+.vs/
+.vscode/
+*.swp
+.DS_Store
+*.user

@@ -1,7 +1,6 @@
 # 匹配任意lab下的build文件夹
 /build/
 /.cache/
-/tests/
 # 匹配任意lab下的C/C++编译产物
 /*.o
 /*.obj

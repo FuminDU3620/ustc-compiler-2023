@@ -1,4 +1,5 @@
 #include "Function.hpp"
+#include "BasicBlock.hpp"
 #include "IRprinter.hpp"
 #include "Module.hpp"
 
@@ -42,7 +43,33 @@ void Function::remove(BasicBlock *bb) {
     }
 }
 
-void Function::add_basic_block(BasicBlock *bb) { basic_blocks_.push_back(bb); }
+void Function::add_basic_block(BasicBlock *bb) {
+    const std::string &original_name = bb->get_name();
+
+    if (!original_name.empty()) {
+        std::string unique_name = original_name;
+        int suffix = 1;
+        bool name_conflict = false;
+
+        do {
+            name_conflict = false;
+            for (BasicBlock& existing_bb : basic_blocks_) {
+                if (existing_bb.get_name() == unique_name) {
+                    name_conflict = true;
+                    unique_name = original_name + std::to_string(suffix);
+                    suffix++;
+                    break;
+                }
+            }
+        } while (name_conflict);
+
+        if (unique_name != original_name) {
+            bb->set_name(unique_name);
+        }
+    }
+
+    basic_blocks_.push_back(bb);
+ }
 
 void Function::set_instr_name() {
     std::map<Value *, int> seq;

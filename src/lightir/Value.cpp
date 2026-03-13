@@ -5,11 +5,8 @@
 #include <cassert>
 
 bool Value::set_name(std::string name) {
-    if (name_ == "") {
-        name_ = name;
-        return true;
-    }
-    return false;
+    name_ = std::move(name);
+    return true;
 }
 
 void Value::add_use(User *user, unsigned arg_no) {

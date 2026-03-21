@@ -1,5 +1,5 @@
+cmake_minimum_required( VERSION 3.8 )
 project(CMINUSF)
-cmake_minimum_required( VERSION 3.4 )
 
 set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -std=c99")
 
@@ -39,6 +39,7 @@ INCLUDE_DIRECTORIES(
     include/cminusfc
     include/common
     include/lightir
+    include/codegen
     ${LLVM_INCLUDE_DIRS}
 )
 

@@ -11,6 +11,7 @@
 #include <optional>
 #include <regex>
 #include <string>
+#include <cstring>
 #include <unistd.h>
 #include <sys/select.h>
 #include <sys/wait.h>

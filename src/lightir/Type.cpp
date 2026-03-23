@@ -3,6 +3,7 @@
 
 #include <array>
 #include <cassert>
+#include <algorithm>
 
 Type::Type(TypeID tid, Module *m) {
     tid_ = tid;

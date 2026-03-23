@@ -4,6 +4,7 @@
 #include "Constant.hpp"
 #include "Function.hpp"
 #include "GlobalVariable.hpp"
+#include <algorithm>
 
 std::string print_as_op(Value *v, bool print_ty) {
     std::string op_ir;
@@ -677,10 +678,8 @@ std::string PhiInst::print() {
     if (this->get_num_operand() / 2 <
         this->get_parent()->get_pre_basic_blocks().size()) {
         for (auto pre_bb : this->get_parent()->get_pre_basic_blocks()) {
-            if (std::find(this->get_operands().begin(),
-                          this->get_operands().end(),
-                          static_cast<Value *>(pre_bb)) ==
-                this->get_operands().end()) {
+            auto &ops = this->get_operands();
+            if (std::find(ops.begin(), ops.end(), static_cast<Value *>(pre_bb)) == ops.end()) {
                 // find a pre_bb is not in phi
                 instr_ir += ", [ undef, " + print_as_op(pre_bb, false) + " ]";
             }
